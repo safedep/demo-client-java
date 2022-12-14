@@ -18,6 +18,10 @@ ext {
 	set('springCloudVersion', "2021.0.4")
 }
 
+dependencyLocking {
+    lockAllConfigurations()
+}
+
 repositories {
     // Use supply chain gateway for external repository access
     maven {
