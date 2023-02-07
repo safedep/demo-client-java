@@ -14,10 +14,11 @@ jobs:
       - name: Run Vet
         run: |
           docker run \
+            -u $(id -u ${USER}):$(id -g ${USER}) \
             -e VET_INSIGHTS_API_KEY=${{ secrets.VET_INSIGHTS_API_KEY }} \
             -v `pwd`:/app \
             ghcr.io/safedep/vet:latest \
-            scan -D /app --report-markdown=/app/vet.md
+            scan -s -D /app --report-markdown=/app/vet.md
 
       - name: Add Vet Report to Summary
         run: cat vet.md >> $GITHUB_STEP_SUMMARY
