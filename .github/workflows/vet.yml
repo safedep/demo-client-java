@@ -17,7 +17,7 @@ jobs:
             -e VET_INSIGHTS_API_KEY=${{ secrets.VET_INSIGHTS_API_KEY }} \
             -v `pwd`:/app \
             ghcr.io/safedep/vet:latest \
-            -D /app --report-markdown=/app/vet.md
+            scan -D /app --report-markdown=/app/vet.md
 
       - name: Add Vet Report to Summary
         run: cat vet.md >> $GITHUB_STEP_SUMMARY
