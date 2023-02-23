@@ -23,6 +23,8 @@ dependencyLocking {
 }
 
 repositories {
+    mavenCentral()
+
     // Use supply chain gateway for external repository access
     mavenCentral()
     maven {
@@ -52,7 +54,9 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 	implementation 'org.jsoup:jsoup:1.15.4'
-	compileOnly 'org.projectlombok:lombok'
+	implementation 'xstream:xstream:1.2.2'
+
+    compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
