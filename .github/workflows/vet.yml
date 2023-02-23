@@ -1,0 +1,28 @@
+name: OSS Vet
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [ main ]
+
+jobs:
+  vet:
+    name: Vet OSS Security
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Vet
+        run: |
+          docker run \
+            -u $(id -u ${USER}):$(id -g ${USER}) \
+            -e VET_INSIGHTS_API_KEY=${{ secrets.VET_INSIGHTS_API_KEY }} \
+            -v `pwd`:/app \
+            ghcr.io/safedep/vet:latest \
+            scan -s -D /app \
+            --exceptions /app/.vet/exceptions.yml \
+            --filter-suite /app/.vet/policy.yml \
+            --filter-fail \
+            --report-markdown=/app/vet.md
+
+      - name: Add Vet Report to Summary
+        run: cat vet.md >> $GITHUB_STEP_SUMMARY
