@@ -1,0 +1,36 @@
+name: vet Docker E2E
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [ main ]
+  schedule:
+    - cron: '10 */2 * * *'
+
+jobs:
+  vet:
+    name: vet Docker E2E
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run vet Docker
+        run: |
+          docker run \
+            -u $(id -u ${USER}):$(id -g ${USER}) \
+            -e VET_INSIGHTS_API_KEY=${{ secrets.VET_INSIGHTS_API_KEY }} \
+            -v `pwd`:/app \
+            ghcr.io/safedep/vet:latest \
+            scan -s -D /app \
+            --exceptions /app/.vet/exceptions.yml \
+            --filter-suite /app/.vet/policy.yml \
+            --report-markdown=/app/vet.md \
+            --json-dump-dir=/app/json-dump
+
+      - name: Add Vet Report to Summary
+        run: cat vet.md >> $GITHUB_STEP_SUMMARY
+
+      - name: Test Expected Value in Markdown Report
+        run: cat vet.md | (grep "net.minidev:json-smart@2.4.7" || exit -1)
+
+      - name: Test Expected Value in JSON Dump
+        run: cat 'json-dump/*.json' | (grep "net.minidev:json-smart" || exit -1)
