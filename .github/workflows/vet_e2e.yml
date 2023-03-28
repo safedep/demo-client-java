@@ -20,6 +20,7 @@ jobs:
             -v `pwd`:/app \
             ghcr.io/safedep/vet:latest \
             scan -s -D /app \
+            --transitive \
             --exceptions /app/.vet/exceptions.yml \
             --filter-suite /app/.vet/policy.yml \
             --report-markdown=/app/vet.md \
