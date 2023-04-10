@@ -32,5 +32,9 @@ jobs:
       - name: Test Expected Value in Markdown Report
         run: cat vet.md | (grep "net.minidev:json-smart@2.4.7" || exit -1)
 
+      - name: Test Exempted Package not in Markdown Report
+        run: cat vet.md | ((grep "org.yaml:snakeyaml@1.30" && exit -1) || exit 0)
+
       - name: Test Expected Value in JSON Dump
         run: cat json-dump/*.json | (grep "net.minidev:json-smart" || exit -1)
+
