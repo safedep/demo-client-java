@@ -26,7 +26,7 @@ repositories {
     mavenCentral()
 
     // Use supply chain gateway for external repository access
-    mavenCentral()
+    // Not in use
     maven {
         url "http://localhost:10000/maven2"
         allowInsecureProtocol true
