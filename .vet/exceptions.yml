@@ -1,3 +1,4 @@
+name: Auto Generated Exceptions
 description: Exceptions file auto-generated using vet
 exceptions:
 - ecosystem: Maven
