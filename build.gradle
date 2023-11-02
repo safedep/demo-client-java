@@ -23,23 +23,7 @@ dependencyLocking {
 }
 
 repositories {
-    // Use supply chain gateway for external repository access
     mavenCentral()
-    maven {
-        url "http://localhost:10000/maven2"
-        allowInsecureProtocol true
-
-				if (System.getenv("USE_GATEWAY_AUTH")) {
-					credentials {
-							authentication {
-									basic(BasicAuthentication)
-							}
-
-							username "demo-java-gradle/someUser@someOrg"
-							password "somePassword"
-					}
-				}
-    }
 }
 
 dependencies {
@@ -51,7 +35,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-	implementation 'org.jsoup:jsoup:1.15.4'
+    implementation group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.20'
+
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
