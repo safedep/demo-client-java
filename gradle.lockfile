@@ -14,6 +14,7 @@ com.fasterxml.jackson:jackson-bom:2.13.4=compileClasspath,productionRuntimeClass
 com.fasterxml:classmate:1.5.1=compileClasspath,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 com.github.stephenc.jcip:jcip-annotations:1.0-1=compileClasspath,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 com.jayway.jsonpath:json-path:2.7.0=compileClasspath,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+com.liferay:com.liferay.portal.remote.http.tunnel.extender:6.0.16=compileClasspath,productionRuntimeClasspath,runtimeClasspath
 com.nimbusds:nimbus-jose-jwt:9.22=compileClasspath,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 com.sun.activation:jakarta.activation:1.2.2=productionRuntimeClasspath,runtimeClasspath,testRuntimeClasspath
 com.sun.istack:istack-commons-runtime:3.0.12=compileClasspath,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
