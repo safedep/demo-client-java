@@ -1,20 +1,27 @@
 # Demo Client Java
-Java Springboot Demo App for testing [SafeDep Gateway](https://github.com/safedep/gateway)
+Java Springboot Demo App
 
 ## Usage
 
-* Setup [gateway](https://github.com/safedep/gateway)
-* Run build
+Build the application
 
 ```bash
 ./gradlew build --refresh-dependencies
 ```
 
-To use gateway with demo authentication credentials
+Run the application
 
 ```bash
-USE_GATEWAY_AUTH=true ./gradlew build --refresh-dependencies
+./gradlew bootRun
 ```
+
+Generate CycloneDX SBOM
+
+```bash
+./gradlew cyclonedxBom
+```
+
+> Note: The generate SBOM will be placed in `build/reports/bom.json`
 
 ## References
 

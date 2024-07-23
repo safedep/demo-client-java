@@ -1,36 +1,10 @@
 pluginManagement {
   repositories {
     maven {
-      url "http://localhost:10000/gradle-plugins/m2"
-      allowInsecureProtocol true
-
-      if (System.getenv("USE_GATEWAY_AUTH")) {
-        credentials {
-          authentication {
-              basic(BasicAuthentication)
-          }
-
-          username "demo-java-gradle/someUser@someOrg"
-          password "somePassword"
-        }
-			}
+      url "https://plugins.gradle.org/m2/"
     }
 
-    maven {
-      url "http://localhost:10000/maven2"
-      allowInsecureProtocol true
-
-      if (System.getenv("USE_GATEWAY_AUTH")) {
-        credentials {
-          authentication {
-              basic(BasicAuthentication)
-          }
-
-          username "demo-java-gradle/someUser@someOrg"
-          password "somePassword"
-        }
-			}
-    }
+    mavenCentral();
   }
 }
 
